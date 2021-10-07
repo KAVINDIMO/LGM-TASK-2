@@ -1,0 +1,17 @@
+
+
+.main{
+    width:400px;
+    height:300px;
+    display:flex;
+    align-items: center;
+    justify-content: center;
+    background:linear-gradient(300deg, #3b1b86 0%, #0eb3be 100%);
+    color:black;
+    margin:20px 20px 20px 20px;
+    padding:10px 10px 10px 10px;
+
+}
+
+
+

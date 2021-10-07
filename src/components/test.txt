@@ -1,0 +1,52 @@
+import React,{useState,useEffect, Component } from 'react';
+import axios from 'axios';
+import profTab from './profTab';
+
+function App (){
+  const [profile,setprofile] = useState([]);
+  const [loading,setloading] = useState(false);
+
+  const prof = async () => {
+       try{
+         const request = await axios
+         .get(`https://reqres.in/api/users`)
+         .then(res => {
+           console.log(JSON.stringify(res.data.data))
+           setprofile(res.data.data)
+         });
+         setTimeout(function() {
+            setloading(true);
+         }, 3000); 
+        
+       }catch(e){
+         console.log(e)
+       }
+  };
+
+  useEffect( () => {
+    prof()
+  },[])
+
+  return (
+  
+    <div className="App">
+
+    {
+      loading ?
+          profile.map(item => (
+            <li key={item.id}>
+             `
+              <h3>{item.id}</h3>
+              <p>{item.email}</p>
+              <img src={item.avatar} />
+              
+            </li>
+          ))
+          :
+          <img src="https://c.tenor.com/I6kN-6X7nhAAAAAj/loading-buffering.gif"/>
+    }
+    </div>
+  );
+}
+
+export default App;
